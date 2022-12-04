@@ -30,11 +30,3 @@ class UsingStepTwo {
             }
     }
 }
-
-fun usingStepTwo() {
-    val request = request { builder ->
-        builder.url("https://publicobject.com/helloworld.txt")
-        builder.addHeader("headerKey", "headerValue")
-    }
-    // ...
-}
