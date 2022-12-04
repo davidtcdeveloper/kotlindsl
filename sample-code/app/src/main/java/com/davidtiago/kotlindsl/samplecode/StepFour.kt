@@ -9,17 +9,19 @@ class UsingStepFour {
 
     private val client = OkHttpClient()
 
-    fun wrongCall() {
-    
-        val JSON: MediaType = "application/json".toMediaType()
-        val body = "{}".toRequestBody(JSON)
+        fun wrongCall() {
         
-        // Wrong call: adds method GET and post body
-        client.call {
-            url("https://publicobject.com/helloworld.txt")
-            addHeader("headerKey", "headerValue")
-            method("Get", null)
-            post(body)
+            val JSON: MediaType = "application/json".toMediaType()
+            val body = "{}".toRequestBody(JSON)
+            
+            // Wrong call: adds method GET and post body
+            client.call {
+                requestWithReceiver {
+                url("https://publicobject.com/helloworld.txt")
+                addHeader("headerKey", "headerValue")
+                method("Get", null)
+                post(body)
+            }
         }
     }
 
