@@ -33,7 +33,7 @@ class UsingStepFour {
                         addHeader("headerKey", "headerValue")
                     }
                 }
-                .use { response ->
+                .use { response: ->
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
                     for ((name, value) in response.headers) {
