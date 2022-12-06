@@ -11,10 +11,11 @@ fun beforeStepTwo() {
     }
 }
 
-fun Request.Builder.headers(block: () -> List<Pair<String, String>>) {
+fun Request.Builder.headers(block: () -> List<Pair<String, String>>): Request.Builder {
     block().forEach {
         addHeader(it.first, it.second)
     }
+    return this
 }
 
 fun afterStepTwo() {
