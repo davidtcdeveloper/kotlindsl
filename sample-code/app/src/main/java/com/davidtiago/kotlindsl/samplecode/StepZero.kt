@@ -1,22 +1,23 @@
 package com.davidtiago.kotlindsl.samplecode
 
+import okhttp3.OkHttpClient
+import okhttp3.Request
 import java.io.IOException
-import okhttp3.*
 
 /**
  * Sample calls extracted from OkHttp Samples:
  * https://github.com/square/okhttp/tree/master/samples/guide/src/main/java/okhttp3/recipes
  */
-class OkHttpStandard {
+class StepZero {
 
     private val client = OkHttpClient()
 
     fun httpGet() {
         val request =
-                Request.Builder()
-                        .url("https://publicobject.com/helloworld.txt")
-                        .addHeader("headerKey", "headerValue")
-                        .build()
+            Request.Builder()
+                .url("https://publicobject.com/helloworld.txt")
+                .addHeader("headerKey", "headerValue")
+                .build()
 
         val call = client.newCall(request)
 

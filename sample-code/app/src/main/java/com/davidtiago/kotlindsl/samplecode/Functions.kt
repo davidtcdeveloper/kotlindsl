@@ -27,11 +27,11 @@ val callHighOrder = highOrderFunction(
     parameterFunction = { input -> input.toString() }
 )
 
-val callLambda = highOrderFunction { 
-    input -> input.toString() 
+val callLambda = highOrderFunction { input ->
+    input.toString()
 }
 
-fun invokeVariable(){
+fun invokeVariable() {
     callHighOrder()
     callHighOrder.invoke()
 

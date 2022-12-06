@@ -1,30 +1,16 @@
 package com.davidtiago.kotlindsl.samplecode
 
-import java.io.IOException
-import okhttp3.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
-fun OkHttpClient.call(block: () -> Request): Response = this.newCall(block()).execute()
+fun requestWithReceiver(block: Request.Builder.() -> Unit): Request =
+    Request.Builder().also { builder -> builder.block() }.build()
 
-class UsingStepTwo {
+private val client = OkHttpClient()
 
-    private val client = OkHttpClient()
-
-    fun httpGet() {
-        client
-                .call {
-                    request { builder ->
-                        builder.url("https://publicobject.com/helloworld.txt")
-                        builder.addHeader("headerKey", "headerValue")
-                    }
-                }
-                .use { response ->
-                    if (!response.isSuccessful) throw IOException("Unexpected code $response")
-
-                    for ((name, value) in response.headers) {
-                        println("$name: $value")
-                    }
-
-                    println(response.body?.string())
-                }
+fun usingStepThree() {
+    requestWithReceiver {
+        url("https://publicobject.com/helloworld.txt")
+        addHeader("headerKey", "headerValue")
     }
 }

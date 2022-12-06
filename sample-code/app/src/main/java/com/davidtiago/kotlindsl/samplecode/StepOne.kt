@@ -1,12 +1,12 @@
 package com.davidtiago.kotlindsl.samplecode
 
-import okhttp3.*
+import okhttp3.Request
 
 /*
  * Request.Builder is not required anymore
  */
 fun request(block: (Request.Builder) -> Unit): Request =
-        Request.Builder().also { builder -> block(builder) }.build()
+    Request.Builder().also { builder -> block(builder) }.build()
 
 fun usingStepOne() {
     val request = request { builder ->
