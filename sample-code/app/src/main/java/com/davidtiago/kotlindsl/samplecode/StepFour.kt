@@ -9,7 +9,12 @@ fun requestWithReceiver(block: Request.Builder.() -> Unit): Request =
 
 fun afterStepFour() {
     requestWithReceiver {
-        url("https://publicobject.com/helloworld.txt")
-        addHeader("headerKey", "headerValue")
+        url("https://api.github.com/repos/square/okhttp/issues")
+        headers {
+            ("User-Agent" to "OkHttp Headers.java") +
+                    ("Accept" to "application/json; q=0.5") +
+                    ("Accept" to "application/vnd.github.v3+json")
+
+        }
     }
 }
