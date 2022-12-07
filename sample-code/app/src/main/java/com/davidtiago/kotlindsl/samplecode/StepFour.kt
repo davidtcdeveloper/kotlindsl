@@ -1,5 +1,3 @@
-@file:JvmName("StepFiveKt")
-
 package com.davidtiago.kotlindsl.samplecode
 
 import okhttp3.Request
