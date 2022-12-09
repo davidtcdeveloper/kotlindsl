@@ -34,14 +34,14 @@ interface BuilderReceiverMethod {
 
 internal fun BuilderReceiverMethod.buildRequest() = requestBuilder.build()
 
-class RequestBuildReceiver(override val requestBuilder: Request.Builder): BuilderReceiverMethod
+class RequestBuildReceiver(override val requestBuilder: Request.Builder) : BuilderReceiverMethod
 
-fun RequestBuildReceiver.get(block: ()->String): GetBuildReceiver =
+fun RequestBuildReceiver.get(block: () -> String): GetBuildReceiver =
     GetBuildReceiver(requestBuilder.url(block()))
 
-class GetBuildReceiver(override val requestBuilder: Request.Builder): BuilderReceiverMethod
+class GetBuildReceiver(override val requestBuilder: Request.Builder) : BuilderReceiverMethod
 
-class FinalBuilderReceiver(override val requestBuilder: Request.Builder): BuilderReceiverMethod
+class FinalBuilderReceiver(override val requestBuilder: Request.Builder) : BuilderReceiverMethod
 
 infix fun GetBuildReceiver.withHeaders(headers: () -> List<Pair<String, String>>): FinalBuilderReceiver =
     FinalBuilderReceiver(requestBuilder.headers(headers))
@@ -50,7 +50,7 @@ fun requestTyped(block: RequestBuildReceiver.() -> BuilderReceiverMethod) {
     RequestBuildReceiver(
         Request.Builder()
     ).block()
-    .buildRequest()
+        .buildRequest()
 }
 
 fun afterStepFive() {
